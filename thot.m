@@ -1,14 +1,14 @@
 function [predict_data, out] = thot(data, opts)
-%% 一些初始化准备
-% 从输入的结构体 |opts| 中读取参数或采取默认参数。
+%% Prepare for initialization
+% Read parameters from the input structure |opts|.
 %
-% * |opts.predictor_type| ：预测算子，例如ARIMA,AR
-% * |opts.para| ：预测算子对应的超参数，如ARIMA算子对应的para=[p d q]
-% * |opts.phi| ：正则项参数
-% * |opts.isclearG| ：是否每次迭代后将fft_S的非对角线元素清零。1则清零，默认为0.
-% * |opts.itermax| ：最大迭代次数
-% * |opts.core_size| ：最大迭代次数
-% * |opts.isReal| ：输入数据是否为实数。如果为实数则为1，否则则为0，默认为0.
+% * |opts.predictor_type|: predictor operator, such as 'ARIMA', 'AR'
+% * |opts.para|: Hyperparameters corresponding to the prediction operator, e.g. para=[p d q] corresponding to the ARIMA operator
+% * |opts.phi|: regularisation parameter
+% * |opts.isclearG|: Whether to zero out the non-diagonal elements of fft_S after each iteration. 1 is zeroed out, default is 0.
+% * |opts.itermax|: ：最大迭代次数
+% * |opts.core_size|: ：最大迭代次数
+% * |opts.isReal|: ：输入数据是否为实数。如果为实数则为1，否则则为0，默认为0.
 if ~isfield(opts, 'predictor_type'); opts.predictor_type = 'ARIMA'; end
 if ~isfield(opts, 'para'); opts.para = [3 1 0]; end
 if ~isfield(opts, 'phi'); opts.phi = 1e2; end
