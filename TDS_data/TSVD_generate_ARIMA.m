@@ -32,7 +32,7 @@ fft_data=cell(T,1);     data = fft_data;
 S=cell(T,1);
 fft_S = S;
 
-% 生成U:n1*r*n3的实数张量,V:n2*r*n3的实数张量
+% generate real tensor U:n1*r*n3, V:n2*r*n3
 A = randn(n1,n2,n3);
 fft_A = fft(A,[],3);
 fft_U = zeros(n1,scale_core,n3);  fft_V = zeros(n2,scale_core,n3);
