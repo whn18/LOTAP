@@ -100,3 +100,13 @@ for d=1:D
 end
 X_diff=X(1:len_x-D);
 end
+
+%% subfunction update_final_dif
+function update_result=update_final_dif(TDS_final_dif,new_dif)
+D=length(TDS_final_dif)-1;
+TDS_final_dif{end}=new_dif;
+for d=D-1:-1:0
+    TDS_final_dif{d+1}=TDS_final_dif{d+2}+TDS_final_dif{d+1};
+end
+update_result=TDS_final_dif;
+end
