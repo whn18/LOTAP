@@ -14,7 +14,7 @@ d=1;
 gamma = 0.1;
 
 [X,fft_S,fft_U,fft_V]=TSVD_generate_ARIMA(T,scale_data,scale_core,AR_evolution,d);
-plot(1:100,cellfun(@frob,X))
+% plot(1:T,cellfun(@frob,X))
 
 %% add noisy
 X_without_noise = X;
