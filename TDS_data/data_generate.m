@@ -41,4 +41,4 @@ end
 init_out.f1 = f1;    init_out.f2 = f2;
 init_out.f = (f1+f2)/scale_data(3);
 
-save('tds.mat','init_out','X_without_noise','X');
+% save('tds.mat','init_out','X_without_noise','X');
