@@ -4,6 +4,7 @@ clc
 addpath(genpath(pwd))
 
 %% generate synthetic (SYN) data
+fprintf('*** Generate Synthetic Data ****\n')
 T=200;
 scale_data=[100,100,10];
 scale_core=4;
@@ -34,8 +35,8 @@ para = [3 1 0];
 phi = 100;
 itermax = 3;
 
-%% LOTAP(phi=100)
-phi = 100;
+%% LOTAP
+fprintf('**** Begin LOTAP ****\n')
 opts = struct();    
 opts.predictor_type = 'ARIMA';  opts.para = para;   opts.phi = phi; 
 opts.isclearG = 0;  opts.core_size = 6;    opts.itermax = itermax;
@@ -44,7 +45,8 @@ for t=1: predict_length
     [predict_data, out] = LOTAP(X(1: trans_length+t-1), opts);
     predict_X{t} = predict_data;
 end
-LOTAP_err = geterr(predict_X,X_without_noise(trans_length+1:trans_length+predict_length));
-mean(LOTAP_err)
+% LOTAP_err = geterr(predict_X,X_without_noise(trans_length+1:trans_length+predict_length));
+% mean(LOTAP_err)
 LOTAP_err2 = geterr(predict_X,X(trans_length+1:trans_length+predict_length));
-mean(LOTAP_err2)
+fprintf('MSPE=%5.3f\n',mean(LOTAP_err2))
+rmpath(genpath(pwd))
