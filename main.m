@@ -27,8 +27,8 @@ for i = 1: T
 end
 
 %% initial the parameter
-trans_length = 20;
-predict_length = 5;
+trans_length = 80;
+predict_length = 20;
 predictor_type = 'ARIMA';
 core_size = 4;
 para = [3 1 0];
