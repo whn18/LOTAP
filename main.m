@@ -48,5 +48,7 @@ end
 % LOTAP_err = geterr(predict_X,X_without_noise(trans_length+1:trans_length+predict_length));
 % mean(LOTAP_err)
 LOTAP_err2 = geterr(predict_X,X(trans_length+1:trans_length+predict_length));
-fprintf('MSPE=%5.3f\n',mean(LOTAP_err2))
+fprintf('MSPE = %5.3f, time cost per time step = %5.3fs.\n',mean(LOTAP_err2), mean(out.time))
+
+%% 
 rmpath(genpath(pwd))
